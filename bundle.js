@@ -17,12 +17,14 @@ var img$1 = "data:image/svg+xml,%3csvg aria-hidden='true' focusable='false' data
 var img = "data:image/svg+xml,%3csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='caret-down' class='svg-inline--fa fa-caret-down fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3e%3cpath fill='currentColor' d='M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z'%3e%3c/path%3e%3c/svg%3e";
 
 const CONTAINER = styled__default['default'].div`
+    position: relative;
     ${props => props.customStyle}
 `;
 const TITLE = styled__default['default'].h3`
     ${props => props.customStyle}
 `;
 const LIST = styled__default['default'].div`
+    position: absolute;
     display: flex;
     flex-direction: column;
     border: solid 1px;
@@ -36,6 +38,11 @@ const SELECTMENU = styled__default['default'].div`
     border: solid 1px;
     padding: 2px 4px;
     width: 400px;
+    ${props => props.customStyle}
+`;
+const PLACEHOLDER = styled__default['default'].span`
+    cursor: pointer;
+    width: 100%;
     ${props => props.customStyle}
 `;
 const OPTIONSELECTED = styled__default['default'].span`
@@ -92,30 +99,60 @@ function Select({
 }) {
   const [open, setOpen] = React.useState(false);
   const [choice, setChoice] = React.useState(placeholder !== "" ? placeholder : options[0]);
+  const [initialOption, setInitialOption] = React.useState(true);
 
   const selected = e => {
     setChoice(e.target.innerHTML);
     setOpen(!open);
   };
 
+  const escape = () => {
+    setOpen(false);
+  };
+
+  React.useEffect(() => {
+    if (open) {
+      window.addEventListener("keydown", e => {
+        if (e.key === "Escape") {
+          escape();
+        }
+      });
+      window.addEventListener("click", escape);
+    }
+
+    return () => {
+      window.removeEventListener("keydown", escape);
+      window.removeEventListener("click", escape);
+    };
+  }, [open]);
   return /*#__PURE__*/React__default['default'].createElement(CONTAINER, {
     customStyle: styleContainer
   }, title !== "" && /*#__PURE__*/React__default['default'].createElement(TITLE, {
     customStyle: styleTitle
   }, title), /*#__PURE__*/React__default['default'].createElement(SELECTMENU, {
+    id: "selectMenu",
     customStyle: styleSelectMenu
-  }, /*#__PURE__*/React__default['default'].createElement(OPTIONSELECTED, {
+  }, initialOption ? /*#__PURE__*/React__default['default'].createElement(PLACEHOLDER, {
+    onClick: e => {
+      setInitialOption(true);
+      selected(e);
+    }
+  }, choice) : /*#__PURE__*/React__default['default'].createElement(OPTIONSELECTED, {
+    id: "selectMenu",
     onClick: e => selected(e),
     customStyle: styleOptionSelected
   }, choice), open ? /*#__PURE__*/React__default['default'].createElement(IMG, {
+    id: "selectMenu",
     src: up,
     customStyle: styleImg
   }) : /*#__PURE__*/React__default['default'].createElement(IMG, {
     src: down,
     customStyle: styleImg
   })), open ? /*#__PURE__*/React__default['default'].createElement(LIST, {
+    id: "selectMenu",
     customStyle: styleList
   }, options.map((option, index) => /*#__PURE__*/React__default['default'].createElement(OPTION, {
+    id: "selectMenu",
     key: index,
     onClick: e => selected(e),
     customStyle: styleOption
