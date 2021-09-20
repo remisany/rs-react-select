@@ -133,6 +133,7 @@ function Select({
     id: "selectMenu",
     customStyle: styleSelectMenu
   }, initialOption ? /*#__PURE__*/React__default['default'].createElement(PLACEHOLDER, {
+    customStyle: stylePlaceholder,
     onClick: e => {
       setInitialOption(true);
       selected(e);
@@ -168,6 +169,7 @@ Select.propTypes = {
   styleList: PropTypes__default['default'].object,
   styleOption: PropTypes__default['default'].object,
   styleOptionSelected: PropTypes__default['default'].object,
+  stylePlaceholder: PropTypes__default['default'].object,
   styleSelectMenu: PropTypes__default['default'].object,
   styleTitle: PropTypes__default['default'].object,
   title: PropTypes__default['default'].string,
@@ -182,6 +184,7 @@ Select.defaultProps = {
   styleList: {},
   styleOption: {},
   styleOptionSelected: {},
+  stylePlaceholder: {},
   styleSelectMenu: {},
   styleTitle: {},
   title: "",
