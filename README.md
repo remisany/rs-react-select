@@ -76,6 +76,7 @@ const customList = {
 ```js
 Select.defaultProps = {
     down: Down, //To change the default down image
+    hoverBackground: "#CECECE", //To customize the hover option background style
     options: ["Option 1", "Option 2", "Option 3"], //Options to display
     placeholder: "", //If no value then option 1 by default
     styleContainer: {}, //To customize the container style which contains all the select menu 
@@ -96,6 +97,7 @@ Select.defaultProps = {
 ```js
 Select.propTypes = {
     down: PropTypes.string,
+    hoverBackground: PropTypes.string,
     options: PropTypes.array,
     placeholder: PropTypes.string,
     styleContainer: PropTypes.object,

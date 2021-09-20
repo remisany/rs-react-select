@@ -66,6 +66,7 @@ const OPTION = styled.div`
 /**
 * @param {object} props - Props
 * @param {string} down - To change the default down image
+* @param {string} hoverBackground - To customize the hover option background style
 * @param {array} options - Options to display
 * @param {string} placeholder - If no value then option 1 by default
 * @param {object} styleContainer - To customize the container style which contains all the select menu 
@@ -73,6 +74,7 @@ const OPTION = styled.div`
 * @param {object} styleList - To customize the list of options style
 * @param {object} styleOption - To customize the option style
 * @param {object} styleOptionSelected - To customize the option selected style
+* @param {object} stylePlaceholder - To customize the placeholder style
 * @param {object} styleSelectMenu - To customize the select menu style
 * @param {object} styleTitle - To customize the title style
 * @param {string} title - To change the title content
