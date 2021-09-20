@@ -75,31 +75,33 @@ stories.add("Ex1", () => {
     )
 });
 
-/*
-stories.add("Ex1", () => {
-    return (
-        <Select
-            options = {states}
-        />
-    )
-});
-
 stories.add("Ex2", () => {
     return (
         <Select
             options = {states}
             placeholder = "State choice"
-            selectTitle = ""
+            title = "State"
         />
     )
 });
 
+
 stories.add("Ex3", () => {
+    const customSelectMenu = {
+        background: "#CECECE",
+        borderRadius: "5px",
+        border: "none"
+    }
+    
+    const customList = {
+        border: "none"
+    }
+
     return (
         <Select
             options = {states}
-            selectTitle = "State choice"
+            styleList = {customList}
+            styleSelectMenu = {customSelectMenu}
         />
     )
 });
-*/
