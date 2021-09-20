@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -6,6 +6,7 @@ import Up from "../assets/caret-up-solid.svg"
 import Down from "../assets/caret-down-solid.svg"
 
 const CONTAINER = styled.div`
+    position: relative;
     ${(props) => props.customStyle}
 `
 
@@ -14,6 +15,7 @@ const TITLE = styled.h3`
 `
 
 const LIST = styled.div`
+    position: absolute;
     display: flex;
     flex-direction: column;
     border: solid 1px;
@@ -28,6 +30,12 @@ const SELECTMENU = styled.div`
     border: solid 1px;
     padding: 2px 4px;
     width: 400px;
+    ${(props) => props.customStyle}
+`
+
+const PLACEHOLDER = styled.span`
+    cursor: pointer;
+    width: 100%;
     ${(props) => props.customStyle}
 `
 
@@ -75,24 +83,55 @@ const OPTION = styled.div`
 function Select ({down, options, placeholder, styleContainer, styleImg, styleList, styleOption, styleOptionSelected, styleSelectMenu, styleTitle, title, up}) {
     const [open, setOpen] = useState(false)
     const [choice, setChoice] = useState(placeholder !== "" ? placeholder : options[0])
+    const [initialOption, setInitialOption] = useState(true)
 
     const selected = (e) => {
         setChoice(e.target.innerHTML)
         setOpen(!open)
     }
 
+    const escape = () => {
+        setOpen(false)
+    }
+
+    useEffect(() => {
+        if (open) {
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    escape()
+                }
+            })
+
+            window.addEventListener("click", escape)
+        }
+
+        return () => {
+            window.removeEventListener("keydown", escape);
+            window.removeEventListener("click", escape)
+        }
+      },[open])
+
     return (
         <CONTAINER customStyle = {styleContainer}>
             {title !== "" && <TITLE customStyle = {styleTitle}>{title}</TITLE>}
-            <SELECTMENU customStyle = {styleSelectMenu}>
-                <OPTIONSELECTED onClick = {(e) => selected(e)} customStyle = {styleOptionSelected}>{choice}</OPTIONSELECTED>
-                {open ? <IMG src = {up} customStyle = {styleImg}/> : <IMG src = {down} customStyle = {styleImg}/>}
+            <SELECTMENU id = "selectMenu" customStyle = {styleSelectMenu}>
+                {initialOption ? 
+                    <PLACEHOLDER onClick = {(e) => {
+                        setInitialOption(true)
+                        selected(e)}}
+                    >
+                        {choice}
+                    </PLACEHOLDER>
+                :
+                    <OPTIONSELECTED id = "selectMenu" onClick = {(e) => selected(e)} customStyle = {styleOptionSelected}>{choice}</OPTIONSELECTED>
+                }
+                {open ? <IMG id = "selectMenu" src = {up} customStyle = {styleImg}/> : <IMG src = {down} customStyle = {styleImg}/>}
             </SELECTMENU>
 
             {open ?
-                <LIST customStyle = {styleList}>
+                <LIST id = "selectMenu" customStyle = {styleList}>
                     {options.map((option, index) =>(
-                        <OPTION key = {index} onClick = {(e) => selected(e)} customStyle = {styleOption}>
+                        <OPTION id = "selectMenu" key = {index} onClick = {(e) => selected(e)} customStyle = {styleOption}>
                             {option}
                         </OPTION>
                     ))}
