@@ -2,12 +2,13 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var react = require('react');
+var React = require('react');
 var PropTypes = require('prop-types');
 var styled = require('styled-components');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
+var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes);
 var styled__default = /*#__PURE__*/_interopDefaultLegacy(styled);
 
@@ -89,32 +90,32 @@ function Select({
   title,
   up
 }) {
-  const [open, setOpen] = react.useState(false);
-  const [choice, setChoice] = react.useState(placeholder !== "" ? placeholder : options[0]);
+  const [open, setOpen] = React.useState(false);
+  const [choice, setChoice] = React.useState(placeholder !== "" ? placeholder : options[0]);
 
   const selected = e => {
     setChoice(e.target.innerHTML);
     setOpen(!open);
   };
 
-  return /*#__PURE__*/React.createElement(CONTAINER, {
+  return /*#__PURE__*/React__default['default'].createElement(CONTAINER, {
     customStyle: styleContainer
-  }, title !== "" && /*#__PURE__*/React.createElement(TITLE, {
+  }, title !== "" && /*#__PURE__*/React__default['default'].createElement(TITLE, {
     customStyle: styleTitle
-  }, title), /*#__PURE__*/React.createElement(SELECTMENU, {
+  }, title), /*#__PURE__*/React__default['default'].createElement(SELECTMENU, {
     customStyle: styleSelectMenu
-  }, /*#__PURE__*/React.createElement(OPTIONSELECTED, {
+  }, /*#__PURE__*/React__default['default'].createElement(OPTIONSELECTED, {
     onClick: e => selected(e),
     customStyle: styleOptionSelected
-  }, choice), open ? /*#__PURE__*/React.createElement(IMG, {
+  }, choice), open ? /*#__PURE__*/React__default['default'].createElement(IMG, {
     src: up,
     customStyle: styleImg
-  }) : /*#__PURE__*/React.createElement(IMG, {
+  }) : /*#__PURE__*/React__default['default'].createElement(IMG, {
     src: down,
     customStyle: styleImg
-  })), open ? /*#__PURE__*/React.createElement(LIST, {
+  })), open ? /*#__PURE__*/React__default['default'].createElement(LIST, {
     customStyle: styleList
-  }, options.map((option, index) => /*#__PURE__*/React.createElement(OPTION, {
+  }, options.map((option, index) => /*#__PURE__*/React__default['default'].createElement(OPTION, {
     key: index,
     onClick: e => selected(e),
     customStyle: styleOption
