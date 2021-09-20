@@ -91,6 +91,7 @@ function Select({
   styleImg,
   styleList,
   styleOption,
+  stylePlaceholder,
   styleOptionSelected,
   styleSelectMenu,
   styleTitle,

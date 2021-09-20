@@ -80,7 +80,7 @@ const OPTION = styled.div`
 * @returns {component} - Select menu
 */
 
-function Select ({down, options, placeholder, styleContainer, styleImg, styleList, styleOption, styleOptionSelected, styleSelectMenu, styleTitle, title, up}) {
+function Select ({down, options, placeholder, styleContainer, styleImg, styleList, styleOption, stylePlaceholder, styleOptionSelected, styleSelectMenu, styleTitle, title, up}) {
     const [open, setOpen] = useState(false)
     const [choice, setChoice] = useState(placeholder !== "" ? placeholder : options[0])
     const [initialOption, setInitialOption] = useState(true)
