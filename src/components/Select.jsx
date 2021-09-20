@@ -116,7 +116,7 @@ function Select ({down, options, placeholder, styleContainer, styleImg, styleLis
             {title !== "" && <TITLE customStyle = {styleTitle}>{title}</TITLE>}
             <SELECTMENU id = "selectMenu" customStyle = {styleSelectMenu}>
                 {initialOption ? 
-                    <PLACEHOLDER onClick = {(e) => {
+                    <PLACEHOLDER customStyle = {stylePlaceholder} onClick = {(e) => {
                         setInitialOption(true)
                         selected(e)}}
                     >
@@ -152,6 +152,7 @@ Select.propTypes = {
     styleList: PropTypes.object,
     styleOption: PropTypes.object,
     styleOptionSelected: PropTypes.object,
+    stylePlaceholder: PropTypes.object,
     styleSelectMenu: PropTypes.object,
     styleTitle: PropTypes.object,
     title: PropTypes.string,
@@ -167,6 +168,7 @@ Select.defaultProps = {
     styleList: {},
     styleOption: {},
     styleOptionSelected: {},
+    stylePlaceholder: {},
     styleSelectMenu: {},
     styleTitle: {},
     title: "",
