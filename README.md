@@ -83,6 +83,7 @@ Select.defaultProps = {
     styleList: {}, //To customize the list of options style
     styleOption: {}, //To customize the option style
     styleOptionSelected: {}, //To customize the option selected style
+    stylePlaceholder : {}, //To customize the placeholder style
     styleSelectMenu: {}, //To customize the select menu style
     styleTitle: {}, //To customize the title style
     title: "", //To change the title content
@@ -101,6 +102,7 @@ Select.propTypes = {
     styleImg: PropTypes.object,
     styleList: PropTypes.object,
     styleOption: PropTypes.object,
+    stylePlaceholder: PropTypes.object,
     styleOptionSelected: PropTypes.object,
     styleSelectMenu: PropTypes.object,
     styleTitle: PropTypes.object,
