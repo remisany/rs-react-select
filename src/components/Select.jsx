@@ -117,7 +117,7 @@ function Select ({down, options, placeholder, styleContainer, styleImg, styleLis
             <SELECTMENU id = "selectMenu" customStyle = {styleSelectMenu}>
                 {initialOption ? 
                     <PLACEHOLDER customStyle = {stylePlaceholder} onClick = {(e) => {
-                        setInitialOption(true)
+                        setInitialOption(false)
                         selected(e)}}
                     >
                         {choice}

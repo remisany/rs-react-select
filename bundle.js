@@ -136,7 +136,7 @@ function Select({
   }, initialOption ? /*#__PURE__*/React__default['default'].createElement(PLACEHOLDER, {
     customStyle: stylePlaceholder,
     onClick: e => {
-      setInitialOption(true);
+      setInitialOption(false);
       selected(e);
     }
   }, choice) : /*#__PURE__*/React__default['default'].createElement(OPTIONSELECTED, {
