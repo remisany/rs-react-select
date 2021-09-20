@@ -57,7 +57,7 @@ const OPTION = styled.div`
     width: 400px;
 
     :hover {
-        background: #CECECE;
+        background: ${props => props.hoverBackground};
     }
 
     ${(props) => props.customStyle}
@@ -80,14 +80,15 @@ const OPTION = styled.div`
 * @returns {component} - Select menu
 */
 
-function Select ({down, options, placeholder, styleContainer, styleImg, styleList, styleOption, stylePlaceholder, styleOptionSelected, styleSelectMenu, styleTitle, title, up}) {
+function Select ({down, hoverBackground, options, placeholder, styleContainer, styleImg, styleList, styleOption, stylePlaceholder, styleOptionSelected, styleSelectMenu, styleTitle, title, up}) {
     const [open, setOpen] = useState(false)
     const [choice, setChoice] = useState(placeholder !== "" ? placeholder : options[0])
     const [initialOption, setInitialOption] = useState(true)
 
     const selected = (e) => {
         setChoice(e.target.innerHTML)
-        setOpen(!open)
+        setOpen(false)
+        initialOption && setInitialOption(false)
     }
 
     const escape = () => {
@@ -114,24 +115,23 @@ function Select ({down, options, placeholder, styleContainer, styleImg, styleLis
     return (
         <CONTAINER customStyle = {styleContainer}>
             {title !== "" && <TITLE customStyle = {styleTitle}>{title}</TITLE>}
-            <SELECTMENU id = "selectMenu" customStyle = {styleSelectMenu}>
+            <SELECTMENU customStyle = {styleSelectMenu}>
                 {initialOption ? 
                     <PLACEHOLDER customStyle = {stylePlaceholder} onClick = {(e) => {
-                        setInitialOption(false)
-                        selected(e)}}
+                        setOpen(true)}}
                     >
                         {choice}
                     </PLACEHOLDER>
                 :
-                    <OPTIONSELECTED id = "selectMenu" onClick = {(e) => selected(e)} customStyle = {styleOptionSelected}>{choice}</OPTIONSELECTED>
+                    <OPTIONSELECTED onClick = {(e) => setOpen(true)} customStyle = {styleOptionSelected}>{choice}</OPTIONSELECTED>
                 }
-                {open ? <IMG id = "selectMenu" src = {up} customStyle = {styleImg}/> : <IMG src = {down} customStyle = {styleImg}/>}
+                {open ? <IMG src = {up} customStyle = {styleImg}/> : <IMG src = {down} customStyle = {styleImg}/>}
             </SELECTMENU>
 
             {open ?
-                <LIST id = "selectMenu" customStyle = {styleList}>
+                <LIST customStyle = {styleList}>
                     {options.map((option, index) =>(
-                        <OPTION id = "selectMenu" key = {index} onClick = {(e) => selected(e)} customStyle = {styleOption}>
+                        <OPTION key = {index} onClick = {(e) => selected(e)} hoverBackground = {hoverBackground} customStyle = {styleOption}>
                             {option}
                         </OPTION>
                     ))}
@@ -145,6 +145,7 @@ function Select ({down, options, placeholder, styleContainer, styleImg, styleLis
 
 Select.propTypes = {
     down: PropTypes.string,
+    hoverBackground: PropTypes.string, 
     options: PropTypes.array,
     placeholder: PropTypes.string,
     styleContainer: PropTypes.object,
@@ -161,6 +162,7 @@ Select.propTypes = {
   
 Select.defaultProps = {
     down: Down,
+    hoverBackground: "#CECECE",
     options: ["Option 1", "Option 2", "Option 3"],
     placeholder: "",
     styleContainer: {},
