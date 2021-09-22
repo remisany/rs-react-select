@@ -12,10 +12,10 @@ A simple react select menu
 
 ## Installation
 
-You can install rs-react-modal with npm:
+You can install rs-react-select with npm:
 `npm i rs-react-select`
 
-For import rs-react-modal:
+For import rs-react-select:
 `import {Select} from "rs-react-select"`
 
 <div id='Example'>
