@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, Fragment } from "react"
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import Up from "../assets/caret-up-solid.svg"
 import Down from "../assets/caret-down-solid.svg"
-
-const CONTAINER = styled.div`
-    position: relative;
-    ${(props) => props.customStyle}
-`
 
 const TITLE = styled.h3`
     ${(props) => props.customStyle}
@@ -69,7 +64,6 @@ const OPTION = styled.div`
 * @param {string} hoverBackground - To customize the hover option background style
 * @param {array} options - Options to display
 * @param {string} placeholder - If no value then option 1 by default
-* @param {object} styleContainer - To customize the container style which contains all the select menu 
 * @param {object} styleImg - To customize the img style
 * @param {object} styleList - To customize the list of options style
 * @param {object} styleOption - To customize the option style
@@ -82,7 +76,7 @@ const OPTION = styled.div`
 * @returns {component} - Select menu
 */
 
-function Select ({down, hoverBackground, options, placeholder, styleContainer, styleImg, styleList, styleOption, stylePlaceholder, styleOptionSelected, styleSelectMenu, styleTitle, title, up}) {
+function Select ({down, hoverBackground, options, placeholder, styleImg, styleList, styleOption, stylePlaceholder, styleOptionSelected, styleSelectMenu, styleTitle, title, up}) {
     const [open, setOpen] = useState(false)
     const [choice, setChoice] = useState(placeholder !== "" ? placeholder : options[0])
     const [initialOption, setInitialOption] = useState(true)
@@ -115,7 +109,7 @@ function Select ({down, hoverBackground, options, placeholder, styleContainer, s
       },[open])
 
     return (
-        <CONTAINER customStyle = {styleContainer}>
+        <Fragment>
             {title !== "" && <TITLE customStyle = {styleTitle}>{title}</TITLE>}
             <SELECTMENU customStyle = {styleSelectMenu}>
                 {initialOption ? 
@@ -141,7 +135,7 @@ function Select ({down, hoverBackground, options, placeholder, styleContainer, s
             :
                 null
             }
-        </CONTAINER>
+        </Fragment>
     )
 }
 

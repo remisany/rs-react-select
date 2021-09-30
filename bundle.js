@@ -16,14 +16,10 @@ var img$1 = "data:image/svg+xml,%3csvg aria-hidden='true' focusable='false' data
 
 var img = "data:image/svg+xml,%3csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='caret-down' class='svg-inline--fa fa-caret-down fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3e%3cpath fill='currentColor' d='M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z'%3e%3c/path%3e%3c/svg%3e";
 
-const CONTAINER = styled__default['default'].div`
-    position: relative;
+const TITLE = styled__default["default"].h3`
     ${props => props.customStyle}
 `;
-const TITLE = styled__default['default'].h3`
-    ${props => props.customStyle}
-`;
-const LIST = styled__default['default'].div`
+const LIST = styled__default["default"].div`
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -32,7 +28,7 @@ const LIST = styled__default['default'].div`
     width: 408px;
     ${props => props.customStyle}
 `;
-const SELECTMENU = styled__default['default'].div`
+const SELECTMENU = styled__default["default"].div`
     display: flex;
     align-items: center;
     border: solid 1px;
@@ -40,22 +36,22 @@ const SELECTMENU = styled__default['default'].div`
     width: 400px;
     ${props => props.customStyle}
 `;
-const PLACEHOLDER = styled__default['default'].span`
+const PLACEHOLDER = styled__default["default"].span`
     cursor: pointer;
     width: 100%;
     ${props => props.customStyle}
 `;
-const OPTIONSELECTED = styled__default['default'].span`
+const OPTIONSELECTED = styled__default["default"].span`
     cursor: pointer;
     width: 100%;
     ${props => props.customStyle}
 `;
-const IMG = styled__default['default'].img`
+const IMG = styled__default["default"].img`
     height: 20px;
     width: 20px;
     ${props => props.customStyle}
 `;
-const OPTION = styled__default['default'].div`
+const OPTION = styled__default["default"].div`
     cursor: pointer;
     padding: 2px 4px;
     width: 400px;
@@ -72,7 +68,6 @@ const OPTION = styled__default['default'].div`
 * @param {string} hoverBackground - To customize the hover option background style
 * @param {array} options - Options to display
 * @param {string} placeholder - If no value then option 1 by default
-* @param {object} styleContainer - To customize the container style which contains all the select menu 
 * @param {object} styleImg - To customize the img style
 * @param {object} styleList - To customize the list of options style
 * @param {object} styleOption - To customize the option style
@@ -90,7 +85,6 @@ function Select({
   hoverBackground,
   options,
   placeholder,
-  styleContainer,
   styleImg,
   styleList,
   styleOption,
@@ -130,29 +124,27 @@ function Select({
       window.removeEventListener("click", escape);
     };
   }, [open]);
-  return /*#__PURE__*/React__default['default'].createElement(CONTAINER, {
-    customStyle: styleContainer
-  }, title !== "" && /*#__PURE__*/React__default['default'].createElement(TITLE, {
+  return /*#__PURE__*/React__default["default"].createElement(React.Fragment, null, title !== "" && /*#__PURE__*/React__default["default"].createElement(TITLE, {
     customStyle: styleTitle
-  }, title), /*#__PURE__*/React__default['default'].createElement(SELECTMENU, {
+  }, title), /*#__PURE__*/React__default["default"].createElement(SELECTMENU, {
     customStyle: styleSelectMenu
-  }, initialOption ? /*#__PURE__*/React__default['default'].createElement(PLACEHOLDER, {
+  }, initialOption ? /*#__PURE__*/React__default["default"].createElement(PLACEHOLDER, {
     customStyle: stylePlaceholder,
     onClick: e => {
       setOpen(true);
     }
-  }, choice) : /*#__PURE__*/React__default['default'].createElement(OPTIONSELECTED, {
+  }, choice) : /*#__PURE__*/React__default["default"].createElement(OPTIONSELECTED, {
     onClick: e => setOpen(true),
     customStyle: styleOptionSelected
-  }, choice), open ? /*#__PURE__*/React__default['default'].createElement(IMG, {
+  }, choice), open ? /*#__PURE__*/React__default["default"].createElement(IMG, {
     src: up,
     customStyle: styleImg
-  }) : /*#__PURE__*/React__default['default'].createElement(IMG, {
+  }) : /*#__PURE__*/React__default["default"].createElement(IMG, {
     src: down,
     customStyle: styleImg
-  })), open ? /*#__PURE__*/React__default['default'].createElement(LIST, {
+  })), open ? /*#__PURE__*/React__default["default"].createElement(LIST, {
     customStyle: styleList
-  }, options.map((option, index) => /*#__PURE__*/React__default['default'].createElement(OPTION, {
+  }, options.map((option, index) => /*#__PURE__*/React__default["default"].createElement(OPTION, {
     key: index,
     onClick: e => selected(e),
     hoverBackground: hoverBackground,
@@ -161,20 +153,20 @@ function Select({
 }
 
 Select.propTypes = {
-  down: PropTypes__default['default'].string,
-  hoverBackground: PropTypes__default['default'].string,
-  options: PropTypes__default['default'].array,
-  placeholder: PropTypes__default['default'].string,
-  styleContainer: PropTypes__default['default'].object,
-  styleImg: PropTypes__default['default'].object,
-  styleList: PropTypes__default['default'].object,
-  styleOption: PropTypes__default['default'].object,
-  styleOptionSelected: PropTypes__default['default'].object,
-  stylePlaceholder: PropTypes__default['default'].object,
-  styleSelectMenu: PropTypes__default['default'].object,
-  styleTitle: PropTypes__default['default'].object,
-  title: PropTypes__default['default'].string,
-  up: PropTypes__default['default'].string
+  down: PropTypes__default["default"].string,
+  hoverBackground: PropTypes__default["default"].string,
+  options: PropTypes__default["default"].array,
+  placeholder: PropTypes__default["default"].string,
+  styleContainer: PropTypes__default["default"].object,
+  styleImg: PropTypes__default["default"].object,
+  styleList: PropTypes__default["default"].object,
+  styleOption: PropTypes__default["default"].object,
+  styleOptionSelected: PropTypes__default["default"].object,
+  stylePlaceholder: PropTypes__default["default"].object,
+  styleSelectMenu: PropTypes__default["default"].object,
+  styleTitle: PropTypes__default["default"].object,
+  title: PropTypes__default["default"].string,
+  up: PropTypes__default["default"].string
 };
 Select.defaultProps = {
   down: img,
