@@ -121,7 +121,7 @@ function Select ({down, hoverBackground, options, placeholder, styleImg, styleLi
                 :
                     <OPTIONSELECTED onClick = {(e) => setOpen(true)} customStyle = {styleOptionSelected}>{choice}</OPTIONSELECTED>
                 }
-                {open ? <IMG src = {up} customStyle = {styleImg}/> : <IMG src = {down} customStyle = {styleImg}/>}
+                {open ? <IMG alt = "Icon to open" src = {up} customStyle = {styleImg}/> : <IMG alt = "Icon to close" src = {down} customStyle = {styleImg}/>}
             </SELECTMENU>
 
             {open ?

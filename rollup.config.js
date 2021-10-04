@@ -1,5 +1,7 @@
-import babel from "@rollup/plugin-babel"
-import image from '@rollup/plugin-image';
+import babel from "@rollup/plugin-babel";
+import image from "@rollup/plugin-image";
+import { terser } from "rollup-plugin-terser";
+import commonjs from "@rollup/plugin-commonjs";
 
 export default {
     input: 'src/index.jsx',
@@ -12,6 +14,8 @@ export default {
         exclude: "node_module/**",
         presets: ['@babel/preset-react']
       }),
-      image()
+      image(),
+      commonjs(),
+      terser(),
     ]
 };
