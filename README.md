@@ -4,6 +4,8 @@
 
 A simple react select menu
 
+[Npm libray link](https://www.npmjs.com/package/rs-react-select)
+
 1. [Installation](#Installation)
 2. [Examples of use](#Example)
 3. [Default option](#Default)
